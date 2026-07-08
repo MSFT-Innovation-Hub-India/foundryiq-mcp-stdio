@@ -124,6 +124,32 @@ Point the client's server registration at the same venv Python + script +
 `--config` path shown above. Use absolute paths so the server resolves
 correctly regardless of the client's working directory.
 
+## Microsoft Scout skill (`SKILL.md`)
+
+This repo also includes [SKILL.md](SKILL.md) — a Scout skill that teaches the
+agent *how* to use the registered `foundryiq-rfp-kb-knowledge_base_retrieve`
+MCP tool correctly (call it directly instead of shelling out, treat the
+returned chunks as the only source of truth, always append a citation-naming
+instruction to the query, never decompose the user's request into
+sub-questions, etc.).
+
+**Registering the MCP server (steps above) is not enough on its own** — Scout
+needs this skill imported separately so the agent knows these usage rules
+exist and when to invoke the tool. Two things have to both be true for Scout
+to use this correctly:
+
+1. The `foundryiq` MCP server is registered in `~/.copilot/mcp-config.json`
+   (see the GitHub Copilot CLI section above) — this is what makes the
+   `foundryiq-rfp-kb-knowledge_base_retrieve` tool exist at all.
+2. **[SKILL.md](SKILL.md) is imported into Scout's Skills/Extensions.** In
+   Scout, add this skill via its extensions/skills UI (import from this repo
+   path) so the skill's `name`/`description` frontmatter is indexed and Scout
+   knows to route FoundryIQ/knowledge-base questions through this tool with
+   the correct calling convention.
+
+After importing, restart Scout (or start a new session) so it re-discovers
+both the MCP tool and the skill.
+
 ## Config resolution order
 
 `--config` flag → `FOUNDRYIQ_CONFIG` env var → `config.json` in the process's
