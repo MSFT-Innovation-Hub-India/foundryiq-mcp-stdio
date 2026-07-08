@@ -1,0 +1,13 @@
+{
+  "servers": {
+    "foundryiq": {
+      "type": "stdio",
+      "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": [
+        "${workspaceFolder}/foundryiq_mcp_server.py",
+        "--config",
+        "${workspaceFolder}/config.json"
+      ]
+    }
+  }
+}

@@ -1,0 +1,3 @@
+# Python dependencies for the FoundryIQ Search skill.
+# Install with:  pip install -r requirements.txt
+mcp>=1.0.0

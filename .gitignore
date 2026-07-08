@@ -1,0 +1,21 @@
+# Real per-workspace config (contains endpoint/tenant/subscription) — never commit.
+# Copy config.example.json to config.json locally instead.
+config.json
+
+# Python virtual environment
+.venv/
+venv/
+env/
+
+# Python bytecode / caches
+__pycache__/
+*.pyc
+*.pyo
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/*
+!.vscode/mcp.json

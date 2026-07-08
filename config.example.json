@@ -1,0 +1,10 @@
+{
+  "_comment": "Copy this file to config.json in the same folder and fill in your Azure AI Search + FoundryIQ knowledge base details. config.json is gitignored so your real endpoint/tenant/subscription never gets committed.",
+  "endpoint": "https://<your-search-service>.search.windows.net",
+  "kb_name": "<your-knowledge-base-name>",
+  "api_version": "2026-05-01-preview",
+  "token_resource": "https://search.azure.com",
+  "_auth_comment": "Set tenant_id when the search service lives in a DIFFERENT Azure AD tenant than your az CLI default (this prevents cross-tenant 401 'invalid_token' errors). The token is minted for this tenant. subscription_id is an optional fallback used only when tenant_id is empty; the two are mutually exclusive for 'az account get-access-token' so tenant_id wins. Leave both empty to use your current az context.",
+  "tenant_id": "",
+  "subscription_id": ""
+}
