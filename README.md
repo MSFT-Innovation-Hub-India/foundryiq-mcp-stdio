@@ -118,6 +118,25 @@ config, so registering it here also makes `knowledge_base_retrieve` callable
 from Scout. Restart Scout / start a new Copilot CLI session after editing
 this file for the change to take effect.
 
+### Microsoft Scout "Add MCP Server" dialog (GUI alternative)
+
+Scout also has a GUI front-end for the same `mcp-config.json` — if you'd
+rather not hand-edit the file, use its **Add MCP Server** dialog instead
+(check first whether `foundryiq` already shows up in Scout's server list from
+the file edit above; if so, skip this to avoid a duplicate registration):
+
+- **Name:** `foundryiq-rfp-kb`
+- **Remote/Local:** Command
+- **Command** (paste as one combined string):
+  ```
+  C:\Users\sansri\stdio-mcpservers\foundryiq-rfp-kb\.venv\Scripts\python.exe C:\Users\sansri\stdio-mcpservers\foundryiq-rfp-kb\foundryiq_mcp_server.py --config C:\Users\sansri\stdio-mcpservers\foundryiq-rfp-kb\config.json
+  ```
+- **Environment variables:** leave blank (auth comes from your existing
+  `az login` session, not env vars)
+- **Tool-call timeout:** the default (~60s) is usually fine, but consider
+  ~90s for headroom — the retrieval pipeline does query planning + parallel
+  search + semantic rerank plus a fresh token mint on every call.
+
 ### Other MCP clients
 
 Point the client's server registration at the same venv Python + script +
